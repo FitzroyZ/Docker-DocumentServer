@@ -1,0 +1,21 @@
+name: onlyofficeDocSer
+services:
+    documentserver:
+        stdin_open: true
+        tty: true
+        ports:
+            - 80:80
+            - 443:443
+        restart: always
+        volumes:
+            - ./app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice
+            - ./app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data
+            - ./app/onlyoffice/DocumentServer/lib:/var/lib/onlyoffice
+            - ./app/onlyoffice/DocumentServer/db:/var/lib/postgresql
+        environment:
+            - JWT_SECRET=your_jwt_secret
+        image: onlyoffice/documentserver:latest
+
+
+
+        #my configured docker compose file.
